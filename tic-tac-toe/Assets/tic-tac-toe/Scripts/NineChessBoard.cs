@@ -79,16 +79,16 @@ public class NineChessBoard : MonoBehaviour
 
     public bool OnLeftMouseUp(Vector2 pos)
     {
-        if (lastGrid == (Vector2Int)grid.WorldToCell(pos))
+        if (lastGrid == (Vector2Int)grid.WorldToCell(pos) && lastGrid.x >= 0 && lastGrid.x <= 2 && lastGrid.y >= 0 && lastGrid.y <= 2)
         {
-            if (lastGrid.x >= 0 && lastGrid.x <= 2 && lastGrid.y >= 0 && lastGrid.y <= 2){
-                UpdateBoard(lastGrid.x, lastGrid.y);
+            if (UpdateBoard(lastGrid.x, lastGrid.y))
+            {
                 return true;
-            }    
+            }
         }
         return false;
     }
-    
+
 
     public bool IsWin()
     {
@@ -144,10 +144,10 @@ public class NineChessBoard : MonoBehaviour
 
     }
 
-    public void UpdateBoard(int x, int y)
+    public bool UpdateBoard(int x, int y)
     {
         if(!bBoardActive){
-            return;
+            return false;
         }
 
         if (squareState[x, y] == ESquareStat.Empty)
@@ -172,6 +172,8 @@ public class NineChessBoard : MonoBehaviour
             }
             lastSquard=new Vector2Int(x,y);
             count++;
+            return true;
         }
+        return false;
     }
 }

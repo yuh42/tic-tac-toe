@@ -11,7 +11,7 @@ public class AI : MonoSingleton<AI>
     ESquareStat[,,] squareStates;
 
     int[] difficultBase = { 2, 4, 6 };
-    int[] difficultAdvance= { 2, 3, 4 };
+    int[] difficultAdvance= { 2, 6, 7 };
     int level;
 
     int currCharacter;
@@ -104,8 +104,6 @@ public class AI : MonoSingleton<AI>
                     {
                         continue;
                     }
-
-                    bfull = true;
 
                     if (currCharacter == AIChess)
                     {
